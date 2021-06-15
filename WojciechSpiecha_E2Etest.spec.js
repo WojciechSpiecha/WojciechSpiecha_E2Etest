@@ -15,6 +15,7 @@ describe('Wojciech Spiecha AVSystem CorrectLoginTest', () => {
 
     cy.get('button')
       .contains('Log in')
+      .should('be.visible')
       .click()
         
     cy.url().should('include', '/success')
@@ -159,14 +160,14 @@ describe('Wojciech Spiecha AVSystem InvalidUserLoginDataTest', () => {
 
 describe('Wojciech Spiecha AVSystem SpellingTest', () => {
 
-  it('checks "login" spelling', () => {
+  it('checks "login" label spelling', () => {
     cy.visit('http://qa2021.avsystem.cloud/login/v1 ')
 
     cy.contains('Login')
   })
 
 
-  it('checks "password" spelling', () => {
+  it('checks "password"  label spelling', () => {
     cy.visit('http://qa2021.avsystem.cloud/login/v1 ')
 
     cy.contains('Password')
