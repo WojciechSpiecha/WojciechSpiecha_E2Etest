@@ -15,7 +15,6 @@ describe('Wojciech Spiecha AVSystem CorrectLoginTest', () => {
 
     cy.get('button')
       .contains('Log in')
-      .should('be.visible')
       .click()
         
     cy.url().should('include', '/success')
@@ -74,7 +73,6 @@ describe('Wojciech Spiecha AVSystem InvalidUserLoginDataTest', () => {
       .should('equal', 'Dopasuj do żądanego formatu.')
     }
     cy.url().should('include', 'login/v1')
-
   })
 
 
@@ -121,7 +119,6 @@ describe('Wojciech Spiecha AVSystem InvalidUserLoginDataTest', () => {
       cy.get('#password').should('have.value', 'haslo1234').invoke('prop', 'validationMessage')
         .should('equal', 'Dopasuj do żądanego formatu.')
     }
-
   })
 
 
@@ -158,7 +155,15 @@ describe('Wojciech Spiecha AVSystem InvalidUserLoginDataTest', () => {
   })
 })
 
-describe('Wojciech Spiecha AVSystem SpellingTest', () => {
+describe('Wojciech Spiecha AVSystem SpellingAndVisibilityTest', () => {
+
+    it('checks button visibility', () => {
+        cy.visit('http://qa2021.avsystem.cloud/login/v1 ')
+
+        cy.get('button')
+          .should('be.visible')
+    })
+
 
   it('checks "login" label spelling', () => {
     cy.visit('http://qa2021.avsystem.cloud/login/v1 ')
@@ -176,7 +181,6 @@ describe('Wojciech Spiecha AVSystem SpellingTest', () => {
 
   it('checks button description spelling', () => {
     cy.visit('http://qa2021.avsystem.cloud/login/v1 ')
-
 
     cy.get('button')
       .contains('Log in')
